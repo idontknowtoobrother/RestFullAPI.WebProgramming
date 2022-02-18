@@ -1,13 +1,15 @@
-let usersData = require('./users.json'); // สร้างตัวแปรข้อมูลจำลอง
+let usersData = require('./users.json'); // Pull data from user.js
 
-getUserPosition = (email, password) => {
-    const passowrd = password.toString()
-    usersData.findIndex((val) => { // หา Index จาก array users
-        return val.password == passowrd && val.email == email;
+// Check email and password then return index(Id) of data
+getUserId = (email, password) => {
+    let id = usersData.findIndex((val) => { // หา Index จาก array users
+        return val.password == password.toString() && val.email == email;
     });
-    return -1;
+    
+    return id;
 }
 
+// Get user by index(Id)
 getUserById = (id) => {
     return usersData[id]
 }
